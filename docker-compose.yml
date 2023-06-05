@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+  web:
+    image: ambientum/php:8.1-nginx
+    container_name: events
+    volumes:
+      - .:/var/www/app:delegated
+    ports:
+      - 8008:8080
+    depends_on:
+      - db
+    environment:
+      - PHP_MEMORY_LIMIT=-1
+      - COMPOSER_MEMORY_LIMIT=-1
+  db:
+    container_name: mysql_events
+    image: mysql:5.7
+    ports:
+      - "5808:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: events
+volumes:
+  quickdev-data:
+    driver: local
