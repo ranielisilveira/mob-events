@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group([], function () {
-    Route::apiResources(['events' => EventsController::class], ['only' => ['store']]);
+    Route::apiResources(['events' => EventsController::class], ['only' => ['store', 'index']]);
 });
