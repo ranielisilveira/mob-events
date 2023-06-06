@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Events;
 use App\Repositories\EventsRepository;
+use Illuminate\Support\Collection;
 
 class EventsService
 {
@@ -15,7 +16,7 @@ class EventsService
         $this->eventsRepository = $eventsRepository;
     }
 
-    public function getAll()
+    public function getAll(): Collection
     {
         return $this->eventsRepository->getAll();
     }
