@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\ParticipantsController;
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,8 @@ Route::group([], function () {
 
 Route::group([], function () {
     Route::apiResources(['participants' => ParticipantsController::class], ['only' => ['store']]);
+});
+
+Route::group([], function () {
+    Route::apiResources(['attendance' => AttendanceController::class], ['only' => ['store']]);
 });
