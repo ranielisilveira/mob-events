@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\ParticipantsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group([], function () {
     Route::apiResources(['events' => EventsController::class], ['only' => ['store', 'index']]);
+});
+
+Route::group([], function () {
+    Route::apiResources(['participants' => ParticipantsController::class], ['only' => ['store']]);
 });
