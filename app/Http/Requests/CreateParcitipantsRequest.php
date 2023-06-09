@@ -17,6 +17,7 @@ class CreateParcitipantsRequest extends FormRequest
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
             'cpf' => ['required', 'string', 'size:11', 'regex:/^\d{11}$/'],
+            'event_id' => ['required', 'exists:events,id'],
         ];
     }
 
@@ -28,6 +29,8 @@ class CreateParcitipantsRequest extends FormRequest
             'cpf.required' => 'CPF is required',
             'cpf.size' => 'CPF must have 11 characters',
             'cpf.regex' => 'CPF must be numeric',
+            'event_id.required' => 'Event is required',
+            'event_id.exists' => 'Event not found',
         ];
     }
 }

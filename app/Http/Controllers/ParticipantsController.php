@@ -6,6 +6,7 @@ use App\Http\Requests\CreateParcitipantsRequest;
 use App\Http\Resources\ParticipantsResource;
 use App\Services\ParticipantsService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ParticipantsController extends Controller
@@ -18,9 +19,10 @@ class ParticipantsController extends Controller
         $this->participantsService = $participantsService;
     }
 
-    public function index(): JsonResponse
+    public function index(Request $request): JsonResponse
     {
-        $participants = $this->participantsService->getAll();
+        $eventId = $request->get('event_id');
+        $participants = $this->participantsService->getParticipantsEvent($eventId);
 
         return response()->json(
             ParticipantsResource::collection($participants),

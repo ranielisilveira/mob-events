@@ -16,13 +16,17 @@ class ParticipantsService
         $this->participantsRepository = $participantsRepository;
     }
 
-    public function getAll(): Collection
+    public function getParticipantsEvent(int $eventId): Collection
     {
-        return $this->participantsRepository->getAll();
+        return $this->participantsRepository->getParticipantsEvent($eventId);
     }
 
     public function create(array $data): Participants
     {
-        return $this->participantsRepository->create($data);
+        $participants = $this->participantsRepository->create($data);
+
+        $participants->events()->associate($data['event_id']);
+
+        return $participants;
     }
 }
