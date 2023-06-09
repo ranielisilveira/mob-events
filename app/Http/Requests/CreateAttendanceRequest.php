@@ -16,19 +16,7 @@ class CreateAttendanceRequest extends FormRequest
     {
         return [
             'participant_id' => ['required', 'integer', 'exists:participants,id'],
-            'event_date' => [
-                'required',
-                'date',
-                function ($attribute, $value, $fail) {
-                    $event = Events::where('start_event', '<=', $value)
-                        ->where('end_event', '>=', $value)
-                        ->first();
-
-                    if (!$event) {
-                        $fail("The date selected for the {$attribute} field is not within the event range.");
-                    }
-                },
-            ],
+            'event_date' => ['required', 'date'],
         ];
     }
 
