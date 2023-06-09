@@ -18,6 +18,16 @@ class ParticipantsController extends Controller
         $this->participantsService = $participantsService;
     }
 
+    public function index(): JsonResponse
+    {
+        $participants = $this->participantsService->getAll();
+
+        return response()->json(
+            ParticipantsResource::collection($participants),
+            Response::HTTP_OK,
+        );
+    }
+
     public function store(CreateParcitipantsRequest $request): JsonResponse
     {
         $data = $request->all();

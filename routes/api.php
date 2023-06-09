@@ -26,7 +26,7 @@ Route::group([], function () {
 });
 
 Route::group([], function () {
-    Route::apiResources(['participants' => ParticipantsController::class], ['only' => ['store']]);
+    Route::apiResources(['participants' => ParticipantsController::class], ['only' => ['store', 'index']]);
 });
 
 Route::group([], function () {

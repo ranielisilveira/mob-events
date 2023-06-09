@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Participants;
 use App\Repositories\ParticipantsRepository;
+use Illuminate\Support\Collection;
 
 class ParticipantsService
 {
@@ -15,12 +16,13 @@ class ParticipantsService
         $this->participantsRepository = $participantsRepository;
     }
 
+    public function getAll(): Collection
+    {
+        return $this->participantsRepository->getAll();
+    }
+
     public function create(array $data): Participants
     {
-        $participants = $this->participantsRepository->create($data);
-
-        $participants->events()->associate($data['event_id']);
-
-        return $participants;
+        return $this->participantsRepository->create($data);
     }
 }
