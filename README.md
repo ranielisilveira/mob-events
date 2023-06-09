@@ -7,6 +7,7 @@ An image was created in the docker-compose.yml file. Check the ports to see if t
 ```docker-compose up```
 
 Run the migrates
+
 ```docker-compose exec web php artisan migrate```
 
 Test the requests in postman
